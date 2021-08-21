@@ -1,0 +1,82 @@
+@import url("https://fonts.googleapis.com/css?family=Noto+Sans+TC:100,300,400,500,700,900&display=swap");
+@import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css");
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-family: 'Noto Sans TC', sans-serif;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    background-color: slateblue;
+    /* background: url('./grass.jpg') repeat; */
+}
+
+.info {
+    margin: 10px;
+    font-size: 20px;
+    color: rgb(0, 255, 242);
+}
+
+#Name {
+    text-decoration: none;
+}
+
+.main-header {
+    background: linear-gradient(180deg, #fab38a, #dc3deb);
+}
+
+.main-header .container {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.main-header .container .home {
+    margin-left: 0px;
+    font-size: 25px;
+    color: blue;
+    /* background-color: gold; */
+}
+
+.main-header .main-nav {
+    margin: auto;
+    display: flex;
+}
+
+.main-header .main-nav a {
+    font-family: 'Noto Sans TC', sans-serif;
+    text-decoration: none;
+    color: #ff0;
+    padding: 5px 3em;
+    position: relative;
+    transform: translateY(0px);
+    transition: .3s;
+}
+
+.main-header .main-nav a:hover {
+    transform: translateY(-5px);
+}
+
+.main-header .main-nav a:after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    right: 50%;
+    bottom: -5px;
+    height: 0;
+    border-bottom: 1px solid #fff;
+    transition: .3s;
+}
+
+.main-header .main-nav a:hover:after {
+    left: 1em;
+    right: 1em;
+}

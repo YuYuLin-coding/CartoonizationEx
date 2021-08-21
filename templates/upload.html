@@ -1,0 +1,29 @@
+<html lang="zh-Hant">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>卡通化專題</title>
+</head>
+
+<html>
+
+<body>
+   Wellcome! {{ userName }}
+   <form action="/uploader" method="POST" enctype="multipart/form-data">
+      <input type="file" name="image" accept="image/*" />
+      <span>圖片</span>
+      <br>
+      <input type="file" name="video" accept="video/*" />
+      <span>影片</span>
+      <br>
+      <select name=modelselect>
+         <option value="Danga">槍彈辯駁</option>
+         <option value="AttackOnTitan">巨人</option>
+      </select>
+      <br>
+      <input type="submit" />
+   </form>
+</body>
+
+</html>

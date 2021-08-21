@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{url_for('static',filename='CSS/05_cartoonize.css')}}">
+    <title>Cartoon</title>
+</head>
+
+<body>
+    <header class="main-header">
+        <div class="container">
+            <div class="home"><a href="/" id="Name">AI卡通化</a></div>
+            <nav class="main-nav">
+                <a href="member">Member</a>
+                <a href="protected">Cartoon</a>
+                <a href="#">Func_1</a>
+                <a href="#">Func_1</a>
+                <form class="form-inline ">
+                    <h6> Wellcome! {{ userName }} </h6>
+                    {% if current_user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{url_for('logout')}}">登出系統</a>
+                    </li>
+                    {% else %}
+                    <a href="{{url_for('login')}}">
+                        <button id="btnLoginSignup" class="btn btn-outline-success " type="button">Login</button>
+                    </a>
+                    /
+                    <a href="{{url_for('register')}}">
+                        <button id="btnLoginSignup" class="btn btn-outline-success " type="button">Register</button>
+                    </a>
+                    {% endif %}
+                </form>
+            </nav>
+
+        </div>
+    </header>
+
+    <main>
+        <form action="/uploader" method="POST" enctype="multipart/form-data">
+            <div class="container">
+                <p class="info">選取<span>圖片</span></p>
+                <div class="custom-file col-3">
+                    <label class="custom-file-label" for="imageFile">Choose file</label>
+                    <input type="file" name="image" accept="image/*" class="custom-file-input" id="imageFile">
+                </div>
+            </div>
+
+            <br>
+            <div class="container">
+                <p class="info">選取<span>影片</span></p>
+                <div class="custom-file col-3">
+                    <label class="custom-file-label" for="videoFile">Choose file</label>
+                    <input type="file" name="video" accept="video/*" class="custom-file-input" id="videoFile">
+                </div>
+            </div>
+
+            <br>
+            <div class="container">
+                <p class="info">選取<span>模型</span></p>
+                <select name="modelselect">
+                    <option value="Danga">槍彈辯駁</option>
+                    <option value="AttackOnTitan">巨人</option>
+                </select>
+                <br><br>
+                <input class="btn btn-primary" type="submit" value="Submit">
+            </div>
+
+        </form>
+
+    </main>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <script>
+        $('#imageFile').change(function () {
+            var i = $(this).prev('label').clone();
+            var file = $('#imageFile')[0].files[0].name;
+            $(this).prev('label').text(file);
+        });
+        $('#videoFile').change(function () {
+            var i = $(this).prev('label').clone();
+            var file = $('#videoFile')[0].files[0].name;
+            $(this).prev('label').text(file);
+        });
+    </script>
+</body>
+
+</html>

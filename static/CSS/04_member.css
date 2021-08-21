@@ -1,0 +1,137 @@
+@import url("https://fonts.googleapis.com/css?family=Noto+Sans+TC:100,300,400,500,700,900&display=swap");
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.main-header {
+    background: linear-gradient(180deg, #fab38a, #dc3deb);
+}
+
+.main-header .container {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.main-header .container .home {
+    margin-left: 0px;
+    font-size: 25px;
+    color: blue;
+    /* background-color: gold; */
+}
+
+.main-header .main-nav {
+    margin: auto;
+    display: flex;
+}
+
+.main-header .main-nav a {
+    font-family: 'Noto Sans TC', sans-serif;
+    text-decoration: none;
+    color: #ff0;
+    padding: 5px 3em;
+    position: relative;
+    transform: translateY(0px);
+    transition: .3s;
+}
+
+.main-header .main-nav a:hover {
+    transform: translateY(-5px);
+}
+
+.main-header .main-nav a:after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    right: 50%;
+    bottom: -5px;
+    height: 0;
+    border-bottom: 1px solid #fff;
+    transition: .3s;
+}
+
+.main-header .main-nav a:hover:after {
+    left: 1em;
+    right: 1em;
+}
+
+body {
+    background-color: slateblue;
+    /* background: url('./grass.jpg') no-repeat center center / cover; */
+}
+
+.body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+#Name {
+    text-decoration: none;
+}
+
+.login {
+    width: 600px;
+    height: 600px;
+    margin-top: 40px;
+    background-color: rgba(0, 0, 0, .5);
+    border-radius: 10px;
+    border: 10px solid rgba(0, 0, 0, 0.705);
+    box-shadow: 0 0 20px #000;
+    backdrop-filter: blur(5px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form {
+    width: 400px;
+    color: #fff;
+}
+
+.form h2 {
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #fff;
+}
+
+.form .group {
+    margin-bottom: 10px;
+}
+
+.form label {
+    line-height: 2;
+    font-family: 'Noto Sans TC', sans-serif;
+}
+
+.form input {
+    width: 100%;
+    border: 1px solid #aaa;
+    line-height: 3;
+    border-radius: 5px;
+}
+
+.form .btn-group {
+    font-size: 0;
+    margin-top: 30px;
+}
+
+.form .btn {
+    font-size: 20px;
+    border-radius: 5px;
+    border: none;
+    background-color: #4d5de9;
+    width: 190px;
+    padding: 10px 0;
+    color: #fff;
+    font-family: 'Noto Sans TC', sans-serif;
+}
+
+.form .btn+.btn {
+    margin-left: 20px;
+}
