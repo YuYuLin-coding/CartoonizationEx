@@ -192,7 +192,7 @@ def register():
     connect.commit()
     flash('註冊成功，趕緊登入試試看吧')
     return redirect(url_for('login'))
-    #return redirect(url_for('protected'))
+    #return redirect(url_for('protected')) ## 123
 
 
 @app.route('/member')
