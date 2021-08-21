@@ -6,25 +6,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="04_member.css">
+    <link rel="stylesheet" href="{{ url_for('static',filename='CSS/04_member.css')}}">
     <title>Member</title>
 </head>
 
 <body>
     <header class="main-header">
         <div class="container">
-            <div class="home"><a href="./00_index.html" id="Name">AI卡通化</a></div>
+            <div class="home"><a href="/" id="Name">AI卡通化</a></div>
             <nav class="main-nav">
-                <a href="./01_register.html">Regieter</a>
-                <a href="./04_member.html">Member</a>
+                <a href="member">Member</a>
                 <a href="protected">Cartoon</a>
                 <a href="#">Func_1</a>
                 <a href="#">Func_1</a>
-
                 <form class="form-inline ">
-                    <a href="./02_login.html">
+                    <h6> Wellcome! {{ userName }} </h6>
+                    {% if current_user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{url_for('logout')}}">登出系統</a>
+                    </li>
+                    {% else %}
+                    <a href="{{url_for('login')}}">
                         <button id="btnLoginSignup" class="btn btn-outline-success " type="button">Login</button>
                     </a>
+                    /
+                    <a href="{{url_for('register')}}">
+                        <button id="btnLoginSignup" class="btn btn-outline-success " type="button">Register</button>
+                    </a>
+                    {% endif %}
                 </form>
             </nav>
 
@@ -33,23 +42,23 @@
     <div class="body">
 
         <div class="login">
-            <form class="form">
+            <form class="form" action="member" method="POST">
                 <h2>會員資料修改</h2>
                 <div class="group">
                     <label for="user_id">帳號</label>
-                    <input type="text" name="" id="user_id">
+                    <input type="text" name="userName" id="user_id" readonly="readonly" value="{{userName}}">
                 </div>
                 <div class="group">
                     <label for="user_password">密碼</label>
-                    <input type="password" name="" id="user_password">
+                    <input type="password" name="passWord" id="user_password" value="{{passWord}}">
                 </div>
                 <div class="group">
                     <label for="user_cellphone">手機號碼</label>
-                    <input type="text" name="" id="user_cellphone">
+                    <input type="text" name="cellPhone" id="user_cellphone" value="{{cellPhone}}">
                 </div>
                 <div class="group">
                     <label for="user_email">Email</label>
-                    <input type="text" name="" id="user_email">
+                    <input type="text" name="mailBox" id="user_email" value="{{mailBox}}">
                 </div>
                 <div class="btn-group">
                     <button class="btn">確定</button>
@@ -58,7 +67,18 @@
             </form>
         </div>
     </div>
-
+    <br>
+    {% block content %}
+    <div class="container">
+        {% for message in get_flashed_messages() %}
+        <div class="alert alert-warning">
+            <button type="button" class="close" data-dismiss="alert">×</button>
+            {{ message }}
+        </div>
+        {% endfor %}
+        {% block page_content %}{% endblock %}
+    </div>
+    {% endblock %}
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
         crossorigin="anonymous"></script>

@@ -6,25 +6,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="{{ url_for('static',filename='CSS/02_login.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='CSS/02_login.css')}}">
     <title>Login</title>
 </head>
 
 <body>
     <header class="main-header">
         <div class="container">
-            <div class="home"><a href="./00_index.html" id="Name">AI卡通化</a></div>
+            <div class="home"><a href="/" id="Name">AI卡通化</a></div>
             <nav class="main-nav">
-                <a href="protected">Regieter</a>
                 <a href="member">Member</a>
-                <a href="uploader">Cartoon</a>
+                <a href="protected">Cartoon</a>
                 <a href="#">Func_1</a>
                 <a href="#">Func_1</a>
-
                 <form class="form-inline ">
-                    <a href="login">
+                    <h6> Wellcome! {{ userName }} </h6>
+                    {% if current_user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{url_for('logout')}}">登出系統</a>
+                    </li>
+                    {% else %}
+                    <a href="{{url_for('login')}}">
                         <button id="btnLoginSignup" class="btn btn-outline-success " type="button">Login</button>
                     </a>
+                    /
+                    <a href="{{url_for('register')}}">
+                        <button id="btnLoginSignup" class="btn btn-outline-success " type="button">Register</button>
+                    </a>
+                    {% endif %}
                 </form>
             </nav>
 

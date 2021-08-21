@@ -195,10 +195,38 @@ def register():
     #return redirect(url_for('protected')) ## 123
 
 
-@app.route('/member')
+@app.route('/member', methods=['POST', 'GET'])
 def membercenter():
     if current_user.is_active:
-        return render_template('04_member.html', userName='current_user.id')
+        if request.method == "GET":
+            userName = current_user.id
+            q = cursor.execute("SELECT * FROM usertable WHERE UserName = ?",
+                               (userName, )).fetchall()[0]
+            userName = q[1]
+            passWord = q[2]
+            cellPhone = q[3]
+            mailBox = q[4]
+            return render_template('04_member.html',
+                                   userName=userName,
+                                   passWord=passWord,
+                                   cellPhone=cellPhone,
+                                   mailBox=mailBox)
+        userName = request.form['userName']
+        passWord = request.form['passWord']
+        cellPhone = request.form['cellPhone']
+        mailBox = request.form['mailBox']
+        cursor.execute(
+            "UPDATE usertable \
+                           SET passWord = ?, cellPhone=?, mailBox=?\
+                           WHERE UserName = ? ",
+            (passWord, cellPhone, mailBox, userName))
+        connect.commit()
+        flash('修改會員資料成功')
+        return render_template('04_member.html',
+                               userName=userName,
+                               passWord=passWord,
+                               cellPhone=cellPhone,
+                               mailBox=mailBox)
     return redirect(url_for('login'))
 
 
