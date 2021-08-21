@@ -198,7 +198,7 @@ def register():
 @app.route('/member')
 def membercenter():
     if current_user.is_active:
-        return render_template('04_member.html', userName=current_user.id)
+        return render_template('04_member.html', userName='current_user.id')
     return redirect(url_for('login'))
 
 
