@@ -63,8 +63,16 @@
             <div class="container">
                 <p class="info">選取<span>模型</span></p>
                 <select name="modelselect">
-                    <option value="Danga">槍彈辯駁</option>
-                    <option value="AttackOnTitan">巨人</option>
+                    <option value="Danga">槍彈辯駁風格</option>
+                    <option value="NewAttackOnTitan">巨人風格</option>
+                    {% if current_user.is_authenticated %}
+                    <option value="SpiritedAway">神隱少女風格</option>
+                    <option value="TheGirlWhoLeaptThroughTime">時空少女風格</option>
+                    <option value="Shinkai">新海誠風格</option>
+                    <option value="Naruto">火影忍者風格</option>
+                    <option value="Fate">命運停駐之夜風格</option>
+                    <option value="DemonSlayer">鬼滅之刃風格</option>
+                    {% endif %}
                 </select>
                 <br><br>
                 <input class="btn btn-primary" type="submit" value="Submit">
